@@ -1,0 +1,88 @@
+/**********************************************************************/
+/***************** Copyright (C) 2014 Richard Spinney *****************/
+/**********************************************************************/
+
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
+
+This code accompanying this file is for `Spatial Metric Calculator' a software tool designed to be able to
+1) Design or import and then edit & visualise undirected graphs that primarily (but are not restricted to being to) represent potential spatial movement
+2) Let the user locate important locations on that graph (particularly locations within office environments)
+3) Calculate a variety of centrality and distance based metrics using both graph and calculated visibility structures with the possibility of using marked locations as destinations that form a subset of vertices on that graph
+4) Export any metrics that have been generated as comma separated plain text files
+5) Allow for visualisation of metrics (in 2 and 3 dimensions) and basic plotting & comparison between metrics and between competing graphs.
+
+This program utilises FLTK to achieve GUI functionality and multi-platform support. 
+
+To compile your own version of Spatial Metric Calculator you will need
+
+1) A copy of FLTK (v1.3.2 or later) (http://www.fltk.org/index.php)
+2) A copy of dxflib (http://www.ribbonsoft.com/en/what-is-dxflib)
+3) A recent copy of boost (http://www.boost.org/)
+
+and will need to link against
+
+1) (lib)fltk.*
+2) (lib)fltk_gl.*
+3) (lib)fltk_forms.*
+4) (lib)dxflib.*
+5) (lib).boost_serialization.*
+6) (lib).boost_iostreams.*
+
+However we recommend following online guides for compiling with FLTK in your environment, or, after installing  FLTK and compiling from the command line (in unix environments) compiling with the following command with the GNU g++ compiler
+
+g++ model.cpp graph_new.cpp locations.cpp building.cpp draw_window.cpp dxf_recursive_model.cpp plot.cpp callbacks.cpp input_output.cpp desk_metrics.cpp minheap.cpp `fltk-config --use-forms --use-gl --use-images --ldstaticflags --cxxflags` -Bstatic /usr/local/lib/libboost_serialization.a /usr/local/lib/libboost_iostreams.a /usr/local/lib/libdxflib.a -pedantic-errors -Wall -Wno-sign-compare -Wno-unused-variable -O2 -o executable
+
+This assumes all relevant headers are located in
+
+/usr/local/include/
+
+and all relevant libraries in
+
+/usr/local/lib
+
+Adapt to your system as needed.
+
+If you wish to crete an app bundle on Mac you need to follow the following commands after the above is run (assuming `executable' and `icon.icns' are in your present working directory)
+
+mkdir Spatial\ Metric\ Calculator.app
+mkdir Spatial\ Metric\ Calculator.app/Contents
+mkdir Spatial\ Metric\ Calculator.app/Contents/Resources
+mkdir Spatial\ Metric\ Calculator.app/Contents/MacOS
+echo APPLnone > Spatial\ Metric\ Calculator.app/Contents/PkgInfo
+cp executable Spatial\ Metric\ Calculator.app/Contents/MacOS/Spatial Metric Calculator
+chmod 755 Spatial\ Metric\ Calculator.app/Contents/MacOS/Spatial Metric Calculator
+cp icon.icns Spatial\ Metric\ Calculator.app/Contents/Resources/icon.icns
+cat << EOF > Spatial\ Metric\ Calculator.app/Contents/info.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+        <key>CFBundleName</key>
+        <string>Spatial Metric Calculator</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleVersion</key>
+        <string>59</string>
+        <key>CFBundleShortVersionString</key>
+        <string>1.1</string>
+	<key>CFBundleIconFile</key>
+        <string>icon</string>
+        <key>CFBundleSignature</key>
+        <string>none</string>
+</dict>
+</plist>
+EOF
