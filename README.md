@@ -17,3 +17,10 @@ the ability to calculate, visualise, export and compare a wealth of metrics defi
 Spatial Metric Calculator can be used to rapidly create/replicate the metrics used in the Active Buildings study and to define a great many more based on many user options. It can also be used as a generic graph analysis tool allowing for the calculation of many established centrality and distance measures alongside others that can be defined/conceived by the user using the metric options.
 
 It is hoped that Spatial Metric Calculator would be particularly useful for any researchers engaged in similar research or any practitioners who would find value in attributing graph distances/measures to locations (particularly within buildings) whether for a similar purpose or any other such as, for example, productivity, efficiency, accessibility etc. which could all feasibly be linked to various measures of distance.
+
+# Videos
+Below are some videos that give an overview of Spatial Metric Calculator as well as a brief video tutorial on its use.
+
+[![Spatial Metric Calculator Overview](https://img.youtube.com/vi/I4MqQNaR3GQ/0.jpg)](https://youtu.be/I4MqQNaR3GQ)
+
+[![Spatial Metric Calculator Tutorial](https://img.youtube.com/vi/mt3RalWg4fc/0.jpg)](https://youtu.be/mt3RalWg4fc)
